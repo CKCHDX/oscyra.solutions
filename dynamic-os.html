@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dynamic OS</title>
+  <link rel="stylesheet" href="css/dark-style.css" />
+  <style>
+    /* Base styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      scroll-behavior: smooth;
+    }
+    a { color: #00aaff; transition: 0.3s; }
+    a:hover { color: #ffaa00; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    .site-header {
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(20, 20, 20, 0.95);
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .site-header .logo { font-size: 1.8em; font-weight: bold; text-decoration: none; color: #fff; }
+    .nav-list { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    .nav-list li a { text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .nav-list li a:hover { color: #00aaff; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, #1f1f1f 0%, #1a1a1a 100%);
+      overflow: hidden;
+    }
+    .hero-inner h1 {
+      font-size: 4em;
+      margin: 0;
+      animation: fadeInDown 1s ease forwards;
+    }
+    .hero-inner .subtitle {
+      font-size: 1.5em;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeInUp 1s 0.5s ease forwards;
+    }
+
+    /* Download buttons */
+    .download-section {
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 1s 1s forwards;
+    }
+    .download-buttons { display: flex; justify-content: center; gap: 25px; margin-top: 20px; flex-wrap: wrap; }
+    .download-btn {
+      padding: 15px 30px;
+      background: #007bff;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+    .download-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      background: #00aaff;
+    }
+    .download-btn.green { background: #28a745; }
+    .download-btn.green:hover { background: #00ff88; }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.8s ease-out;
+    }
+    section.active { opacity: 1; transform: translateY(0); }
+
+    h2 { font-size: 2.5em; margin-bottom: 20px; text-align: center; position: relative; }
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #00aaff;
+      margin: 15px auto 0 auto;
+      border-radius: 2px;
+    }
+
+    ul { padding-left: 20px; line-height: 1.8; }
+
+    /* FAQ */
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 15px 20px;
+      margin-bottom: 5px;
+      background: #1a1a1a;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .faq-question:hover { background: #222; }
+    .faq-answer { display: none; padding: 10px 20px; background: #111; border-radius: 5px; margin-bottom: 10px; }
+
+    /* Footer */
+    .site-footer {
+      padding: 40px 0;
+      text-align: center;
+      background: #111;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-50px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+  </style>
+</head>
+<body>
+  <div class="dynamic-os">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container">
+        <a href="#hero" class="logo">Dynamic OS</a>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#editions">Editions</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#development">Roadmap</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <h1>Dynamic OS</h1>
+          <p class="subtitle">Modern, polished, powerful – multiple editions for every platform.</p>
+
+          <!-- Download Section -->
+          <div class="download-section">
+            <h2>Download Dynamic OS</h2>
+            <p>Get the latest Linux Edition and unpacker to make it bootable.</p>
+            <div class="download-buttons">
+              <a href="https://drive.google.com/uc?export=download&id=1BGT7E8no_uVdkm9WTGzgUzT38isnxkvw" 
+                 class="download-btn">Download Dynamic-OS.los</a>
+              <a href="https://drive.google.com/uc?export=download&id=1D6WorPJ4hjL4MlS0Be3eGkbt4P2uA49y" 
+                 class="download-btn green">Download Unpacker.exe</a>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">Run the unpacker as admin to make the .los file bootable.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <!-- About Section -->
+        <section class="section about" id="about">
+          <h2>What is Dynamic OS?</h2>
+          <p><strong>Dynamic OS</strong> is a next-generation operating system family emphasizing speed, security and a rich, animated GUI. Whether you choose the Linux Edition on Debian, the Windows-Shell Edition, or the upcoming Freestanding Edition, Dynamic OS delivers a user-friendly yet powerful interface with fluid animations and a unique visual style.</p>
+          <p>Named for its dynamic adaptability and modern polish, Dynamic OS combines traditional stability with forward-thinking design, serving developers, power users, and anyone who “just wants it to work.”</p>
+        </section>
+
+        <!-- Editions Section -->
+        <section class="section editions" id="editions">
+          <h2>Editions</h2>
+          <div class="editions-columns">
+            <div>
+              <h3>Linux Edition</h3>
+              <p>Runs on Debian. Inherits Debian’s rock-solid security and performance. On top of that, our custom GUI delivers fast animations, a simple workflow, and full theming support.</p>
+            </div>
+            <div>
+              <h3>Windows-Shell Edition</h3>
+              <p>Installable on Windows 10 & 11 as a shell replacement. Gives you Dynamic OS’s powerful UX and animation layer without replacing your underlying Windows kernel.</p>
+            </div>
+            <div>
+              <h3>Freestanding Edition (In Development)</h3>
+              <p>Under active development: a 64-bit kernel aiming to run independently of any host OS. Brings true self-contained performance, modularity, and the same polished GUI to bare metal.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="section highlights" id="highlights">
+          <h2>Highlights</h2>
+          <ul>
+            <li><strong>Blazing Fast:</strong> Lean core on Debian or native kernel in progress.</li>
+            <li><strong>Secure by Design:</strong> Debian security model, capability-based controls.</li>
+            <li><strong>Animated GUI:</strong> Fluid transitions, advanced effects, minimal lag.</li>
+            <li><strong>User-Friendly:</strong> Intuitive layouts, quick access panels, consistent theming.</li>
+            <li><strong>Modular Architecture:</strong> Easily extend with signed modules and drivers.</li>
+            <li><strong>Cross-Platform Shell:</strong> Same look & feel on Linux and Windows.</li>
+          </ul>
+        </section>
+
+        <!-- Architecture -->
+        <section class="section architecture" id="architecture">
+          <h2>Technical Architecture</h2>
+          <div class="arch-columns">
+            <div>
+              <h3>Partition & Module Model</h3>
+              <ul>
+                <li><strong>System (Linux Edition):</strong> Read-only Debian core + GUI modules.</li>
+                <li><strong>Windows Shell:</strong> Shell DLLs and UX layer running in user mode.</li>
+                <li><strong>Freestanding (future):</strong> Read-only kernel + driver partitions, read/write user space.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Security Model</h3>
+              <ul>
+                <li>Cryptographically signed modules & drivers.</li>
+                <li>Capability-based sandboxing for apps.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>GUI & UX</h3>
+              <ul>
+                <li>Custom compositor with GPU-accelerated animations.</li>
+                <li>Theming engine with light, dark, and custom palettes.</li>
+                <li>Responsive window management & quick-access overlays.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Development Roadmap -->
+        <section class="section development" id="development">
+          <h2>Roadmap & Development</h2>
+          <ul>
+            <li><strong>Q3 2025:</strong> Beta release of Freestanding Edition kernel.</li>
+            <li><strong>Q4 2025:</strong> Windows-Shell Edition plugin SDK.</li>
+            <li><strong>Q1 2026:</strong> Full package manager & app store integration.</li>
+          </ul>
+          <p>Follow progress at <a href="https://oscyra.solutions/dynamic-os" target="_blank">oscyra.solutions/dynamic-os</a>.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section faq" id="faq">
+          <h2>Frequently Asked Questions</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">Why “Dynamic” OS?</button>
+              <div class="faq-answer"><p>Because it adapts to your platform: Linux stability, Windows shell integration, and soon a standalone kernel—all in one unified UX.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Can I extend the GUI?</button>
+              <div class="faq-answer"><p>Yes. Our SDK lets you build and sign custom widgets, themes, and animations for both Linux and Windows-Shell editions.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Is Freestanding ready now?</button>
+              <div class="faq-answer"><p>Not yet. We’re actively developing a 64-bit kernel. Stay tuned for upcoming betas on GitHub and our site.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Where can I download?</button>
+              <div class="faq-answer"><p>Linux Edition packages are on our Debian repo. Windows-Shell installer and development previews at <a href="https://oscyra.solutions/dynamic-os" target="_blank">oscyra.solutions</a>.</p></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 Dynamic OS Project. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function () {
+        this.classList.toggle('open');
+        const answer = this.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Scroll animation for sections
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
