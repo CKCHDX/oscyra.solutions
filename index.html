@@ -1,231 +1,327 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome | Choose Your Project</title>
-  <link rel="stylesheet" href="css/dark-style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oscyra Solutions | Projects</title>
   <style>
-    body.page-index {
-      background: linear-gradient(135deg, #121212 0%, #003459 100%);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
       color: #e0e0e0;
-      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .hero {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
       text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-    }
-
-    .logo-container-wrapper {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
       position: relative;
-      width: 240px;
-      height: 240px;
-      margin: 0 auto 1.5rem auto;
-      z-index: 1;
+      overflow: hidden;
     }
-
-    .logo-container {
+    .hero::before {
+      content: '';
       position: absolute;
-      left: 50%;
-      top: 65%;
-      width: 240px;
-      height: 240px;
-      transform: translate(-50%, -50%) scale(1.2);
-      pointer-events: none;
-    }
-
-    .logo-svg {
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      display: block;
-      position: absolute;
-      top: 0; left: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+      animation: parallax 10s ease-in-out infinite alternate;
+    }
+    @keyframes parallax {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00e5ff, #00ffa3, #00e5ff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease-in-out infinite;
+      margin-bottom: 1rem;
       z-index: 1;
-      pointer-events: none;
     }
-
-    .dots {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 3;
-      pointer-events: none;
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
-
-    .dot {
+    .hero p {
+      font-size: 1.5rem;
+      color: #b0b0b0;
+      margin-bottom: 3rem;
+      z-index: 1;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      z-index: 1;
+      position: relative;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
       position: absolute;
-      width: 76px; height: 76px;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    .project-card:hover::before {
+      left: 100%;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 229, 255, 0.2);
+      border-color: #00e5ff;
+    }
+    .project-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+      fill: #00e5ff;
+    }
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #00e5ff;
+    }
+    .project-card p {
+      margin-bottom: 1rem;
+      color: #b0b0b0;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .tech-badge {
+      background: rgba(0, 229, 255, 0.1);
+      color: #00e5ff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .project-card a {
+      display: inline-block;
+      color: #00e5ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .project-card a:hover {
+      color: #00ffa3;
+    }
+    footer {
+      background: #0a0a0a;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 229, 255, 0.2);
+    }
+    footer a {
+      color: #00e5ff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #00ffa3;
+    }
+    .copyright {
+      margin-top: 1rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #00e5ff;
+      padding: 0.5rem;
       border-radius: 50%;
-      pointer-events: none;
-      background: #00E5FF33;
-      filter: blur(0.5px);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
     }
-
-    .dot-inner {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: #00E5FF;
-      box-shadow: 0 0 24px 8px rgba(0,229,255,0.25);
-      border: 6px solid #181C20;
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
-
-    @media (max-width: 600px) {
-      .logo-container-wrapper { width: 120px; height: 120px; }
-      .logo-container { width: 120px; height: 120px; }
-      .dot { width: 38px; height: 38px; }
-      .dot-inner { border-width: 3px; box-shadow: 0 0 12px 4px rgba(0,229,255,0.25); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .projects {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+      }
+      .project-card {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
-<body class="page-index">
-  <div class="container">
-    <div class="logo-container-wrapper">
-      <div class="logo-container">
-        <!-- SVG ring + core + halved “O” -->
-        <svg class="logo-svg" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <!-- pulsing bicolor radial gradient core -->
-            <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.8">
-                <animate attributeName="stop-opacity"
-                         values="0.6;0.9;0.6"
-                         dur="4s" repeatCount="indefinite"/>
-              </stop>
-              <stop offset="60%" stop-color="#00FFA3" stop-opacity="0.6">
-                <animate attributeName="stop-opacity"
-                         values="0.4;0.8;0.4"
-                         dur="4s" repeatCount="indefinite"/>
-              </stop>
-              <stop offset="100%" stop-color="#00FFA3" stop-opacity="0"/>
-            </radialGradient>
-
-            <!-- glow filter for the outer ring -->
-            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <!-- static glowing ring -->
-          <circle cx="540" cy="540" r="320"
-                  fill="none"
-                  stroke="#00E5FF"
-                  stroke-width="18"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  opacity="0.35"
-                  filter="url(#glow)" />
-
-          <!-- pulsing gradient core -->
-          <circle cx="540" cy="540" r="120"
-                  fill="url(#coreGrad)" />
-
-          <!-- “O” outline with two gaps -->
-          <circle cx="540" cy="540" r="120"
-                  fill="none"
-                  stroke="#ffffff"
-                  stroke-width="22"
-                  stroke-linecap="round"
-                  stroke-dasharray="320 40 320 40"
-                  transform="rotate(-45 540 540)" />
-        </svg>
-
-        <!-- Four wobbling orbiting dots -->
-        <div class="dots">
-          <div class="dot dot1"><div class="dot-inner"></div></div>
-          <div class="dot dot2"><div class="dot-inner"></div></div>
-          <div class="dot dot3"><div class="dot-inner"></div></div>
-          <div class="dot dot4"><div class="dot-inner"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main class="container" style="padding: 4rem 0; text-align: center;">
+<body>
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+  <header class="hero fade-in">
     <h1>Welcome to Oscyra Solutions</h1>
-    <div class="landing-options">
-      <a href="dynamic-os.html" class="btn btn-primary nav-link">Dynamic OS</a>
-      <a href="klar.html" class="btn btn-primary nav-link">Klar-Engine</a>
-      <a href="project-aion.html" class="btn btn-primary nav-link">Project Aion</a>
-
+    <p>Innovative Software Projects that push the boundaries of technology</p>
+  </header>
+  <main class="projects">
+    <div class="project-card fade-in" onclick="window.location.href='https://oscyra.solutions/dynamic-os'">
+      <svg class="project-icon" viewBox="0 0 24 24">
+        <path d="M12 2l1.09 3.26L17 6.74l-2.91 2.83.69 4.01L12 13.77l-3.78 1.98.69-4.01L7 6.74l3.91-.48L12 2z"/>
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M8 8l2 2m4-2l-2 2"/>
+      </svg>
+      <h3>Dynamic OS</h3>
+      <p>A custom operating system focused on performance and security, built from the ground up with modern kernel architecture.</p>
+      <div class="tech-stack">
+        <span class="tech-badge">C++</span>
+        <span class="tech-badge">Linux</span>
+        <span class="tech-badge">Assembly</span>
+      </div>
+      <a href="https://oscyra.solutions/dynamic-os">Learn More</a>
+    </div>
+    <div class="project-card fade-in" onclick="window.location.href='https://oscyra.solutions/klar'">
+      <svg class="project-icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <h3>Klar-Engine</h3>
+      <p>A high-performance search engine designed for efficiency and scalability, handling complex queries with advanced indexing.</p>
+      <div class="tech-stack">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">C++</span>
+        <span class="tech-badge">Elasticsearch</span>
+      </div>
+      <a href="https://oscyra.solutions/klar">Learn More</a>
+    </div>
+    <div class="project-card fade-in" onclick="window.location.href='https://oscyra.solutions/project-aion'">
+      <svg class="project-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <circle cx="6" cy="6" r="2"/>
+        <circle cx="18" cy="6" r="2"/>
+        <circle cx="6" cy="18" r="2"/>
+        <circle cx="18" cy="18" r="2"/>
+        <line x1="12" y1="12" x2="6" y2="6"/>
+        <line x1="12" y1="12" x2="18" y2="6"/>
+        <line x1="12" y1="12" x2="6" y2="18"/>
+        <line x1="12" y1="12" x2="18" y2="18"/>
+      </svg>
+      <h3>Project AION</h3>
+      <p>An AI-driven platform leveraging neural networks for intelligent automation and decision-making in cybersecurity applications.</p>
+      <div class="tech-stack">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">TensorFlow</span>
+        <span class="tech-badge">C++</span>
+      </div>
+      <a href="https://oscyra.solutions/project-aion">Learn More</a>
     </div>
   </main>
-
+  <footer>
+    <a href="https://github.com/CKCHDX" target="_blank">GitHub</a>
+    <a href="mailto:contact@oscyra.solutions">Contact</a>
+    <div class="copyright">&copy; 2026 Oscyra Solutions. All rights reserved.</div>
+  </footer>
   <script>
-    const DOT_COLORS    = ["#00E5FF", "#00FFA3", "#00E5FF", "#00FFA3"];
-    const DOT_ANGLES    = [0, 90, 180, 270];
-    const DOT_RADIUS    = 38;    // px in base 240×240
-    const ORBIT_RADIUS  = 140;   // matches NODE_ORBIT
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
-    const container = document.querySelector('.logo-container');
-    const dots      = [
-      document.querySelector('.dot1'),
-      document.querySelector('.dot2'),
-      document.querySelector('.dot3'),
-      document.querySelector('.dot4')
-    ];
-    const inners    = dots.map(d => d.querySelector('.dot-inner'));
-
-    // prepare dot colors/borders
-    inners.forEach((inner, i) => {
-      inner.style.background = DOT_COLORS[i];
-      inner.style.borderColor = "#181C20";
+    themeToggle.addEventListener('click', () => {
+      const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      // For simplicity, keep dark theme as is, light theme would need additional CSS
     });
 
-    function animate(ts) {
-      const t  = ts / 1000;
-      const w  = container.offsetWidth;
-      const cx = w/2, cy = w/2;
-      const baseOrbit = w * (ORBIT_RADIUS / 240);
-
-      for (let i = 0; i < 4; i++) {
-        // combine steady spin + sinusoidal wobble
-        const steady = (360 * t / 10) % 360;
-        const wobble = 30 * Math.sin(t + i * Math.PI/2);
-        const deg    = DOT_ANGLES[i] + steady + wobble;
-        const rad    = deg * Math.PI/180;
-
-        // pulsing size/glow
-        const pulse    = 0.5 + 0.5 * Math.sin(2*t + i * Math.PI/2);
-        const glowSize = DOT_RADIUS * (1.5 + 0.2*pulse) * (w/240);
-        const dotSize  = DOT_RADIUS * (1.0 + 0.12*pulse) * (w/240);
-
-        const x = cx + baseOrbit * Math.cos(rad);
-        const y = cy + baseOrbit * Math.sin(rad);
-
-        // outer glow
-        dots[i].style.width      = dots[i].style.height = `${glowSize}px`;
-        dots[i].style.left       = `${x - glowSize/2}px`;
-        dots[i].style.top        = `${y - glowSize/2}px`;
-        dots[i].style.background = DOT_COLORS[i] + '33';
-
-        // inner dot
-        const inner = inners[i];
-        inner.style.width      = inner.style.height = `${dotSize}px`;
-        inner.style.boxShadow  = `0 0 ${glowSize/1.5}px ${glowSize/5}px ${DOT_COLORS[i]}44`;
-      }
-
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-
-    // smooth fade-out on navigation
-    document.querySelectorAll('a.nav-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(() => window.location = link.href, 500);
+    // Fade in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
       });
     });
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Ripple effect on click
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(0, 229, 255, 0.6)';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.animation = 'ripple 0.6s linear';
+        ripple.style.left = (e.offsetX - 10) + 'px';
+        ripple.style.top = (e.offsetY - 10) + 'px';
+        ripple.style.width = '20px';
+        ripple.style.height = '20px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
