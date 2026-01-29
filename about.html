@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Oscyra Solutions - Innovation lab creating privacy-first software solutions from Sweden. Learn about our mission and projects.">
+  <meta name="keywords" content="oscyra solutions, about, privacy software, Swedish tech, innovation">
+  <title>About | Oscyra Solutions</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .hero {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+      animation: parallax 10s ease-in-out infinite alternate;
+    }
+    @keyframes parallax {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00e5ff, #00ffa3, #00e5ff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease-in-out infinite;
+      margin-bottom: 1rem;
+      z-index: 1;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero p {
+      font-size: 1.5rem;
+      color: #b0b0b0;
+      z-index: 1;
+    }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .content h2 {
+      font-size: 2.5rem;
+      color: #00e5ff;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid rgba(0, 229, 255, 0.2);
+      padding-bottom: 0.5rem;
+    }
+    .content h3 {
+      font-size: 1.8rem;
+      color: #00ffa3;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .content p {
+      font-size: 1.1rem;
+      color: #c0c0c0;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .highlight-box {
+      background: rgba(0, 229, 255, 0.05);
+      border-left: 4px solid #00e5ff;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .value-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+      border-color: #00e5ff;
+    }
+    .value-card h4 {
+      font-size: 1.3rem;
+      color: #00e5ff;
+      margin-bottom: 0.5rem;
+    }
+    .value-card p {
+      font-size: 1rem;
+      color: #b0b0b0;
+      margin: 0;
+      text-align: left;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 0.8rem 2rem;
+      background: rgba(0, 229, 255, 0.1);
+      color: #00e5ff;
+      text-decoration: none;
+      border: 2px solid #00e5ff;
+      border-radius: 8px;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .back-link:hover {
+      background: #00e5ff;
+      color: #0a0a0a;
+    }
+    footer {
+      background: #0a0a0a;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 229, 255, 0.2);
+      margin-top: 4rem;
+    }
+    footer a {
+      color: #00e5ff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #00ffa3;
+    }
+    .copyright {
+      margin-top: 1rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .content {
+        padding: 2rem 1rem;
+      }
+      .content h2 {
+        font-size: 2rem;
+      }
+      .content h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>About Oscyra Solutions</h1>
+    <p>Building privacy-first technology for a better digital future</p>
+  </header>
+
+  <main class="content">
+    <section>
+      <h2>Who We Are</h2>
+      <p>
+        Oscyra Solutions is an innovation lab based in Svenarum, Sweden, dedicated to creating privacy-first software solutions 
+        that challenge the status quo of modern technology. We believe that powerful software doesn't have to compromise user privacy, 
+        and that innovative design can deliver both exceptional performance and complete data protection.
+      </p>
+      <p>
+        Founded with a vision to create alternatives to mainstream tech giants, we focus on building tools that respect users, 
+        prioritize transparency, and deliver real value without hidden costs or data exploitation.
+      </p>
+    </section>
+
+    <div class="highlight-box">
+      <h3>Our Mission</h3>
+      <p>
+        To develop innovative, privacy-respecting software solutions that empower users with complete control over their data 
+        while delivering exceptional performance and user experience. We're committed to building technology that serves people, 
+        not advertisers.
+      </p>
+    </div>
+
+    <section>
+      <h2>Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>🔐 Privacy First</h4>
+          <p>User privacy is not negotiable. We build GDPR-compliant solutions with zero tracking, no profiling, and complete transparency.</p>
+        </div>
+        <div class="value-card">
+          <h4>⚡ Performance Matters</h4>
+          <p>Fast, efficient, and optimized. We believe great software should be lightning-quick without sacrificing functionality.</p>
+        </div>
+        <div class="value-card">
+          <h4>🌍 Open & Transparent</h4>
+          <p>We embrace open source principles and believe in transparency. Our code and practices are open for scrutiny.</p>
+        </div>
+        <div class="value-card">
+          <h4>🇸🇪 Local Focus</h4>
+          <p>Built in Sweden, for Sweden first. We understand local needs and create solutions tailored for Swedish users.</p>
+        </div>
+        <div class="value-card">
+          <h4>🚀 Innovation Driven</h4>
+          <p>We push boundaries and explore new possibilities in software design, always looking for better ways to solve problems.</p>
+        </div>
+        <div class="value-card">
+          <h4>💎 Quality Over Quantity</h4>
+          <p>We focus on building fewer, better products rather than rushing to market with half-baked solutions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Our Projects</h2>
+      <h3>Klar Search Engine</h3>
+      <p>
+        A privacy-first search ecosystem designed specifically for Swedish users. Klar combines a lightweight desktop browser 
+        with a powerful search engine backend, delivering fast, relevant, ad-free search results without any tracking or profiling. 
+        With GDPR compliance at its core, Klar proves that you don't need to sacrifice privacy for functionality.
+      </p>
+
+      <h3>Dynamic OS</h3>
+      <p>
+        A custom operating system built from the ground up with modern kernel architecture, focusing on performance and security. 
+        Dynamic OS represents our vision of what an operating system should be—fast, secure, and completely transparent.
+      </p>
+
+      <h3>Project AION</h3>
+      <p>
+        An AI-driven platform leveraging neural networks for intelligent automation and decision-making in cybersecurity applications. 
+        AION explores the intersection of artificial intelligence and security, building systems that can learn and adapt while 
+        maintaining user privacy.
+      </p>
+    </section>
+
+    <section>
+      <h2>Why We Build What We Build</h2>
+      <p>
+        The modern internet has strayed from its original promise of open, free information exchange. Instead, we're surrounded 
+        by platforms that track every click, profile every user, and monetize personal data. Search engines show ads disguised 
+        as results. Browsers collect browsing history. "Free" services come at the hidden cost of privacy.
+      </p>
+      <p>
+        We believe there's a better way. Technology can be powerful, innovative, and user-friendly without exploiting personal data. 
+        At Oscyra Solutions, we're proving that privacy-first software isn't just possible—it's superior.
+      </p>
+    </section>
+
+    <div class="highlight-box">
+      <h3>Looking Ahead</h3>
+      <p>
+        We're just getting started. Each project we build brings us closer to our vision of a digital ecosystem where privacy 
+        is default, performance is exceptional, and users are in control. Whether you're a Swedish user looking for a private 
+        search alternative, a developer interested in contributing, or simply someone who believes in our mission, we invite 
+        you to join us on this journey.
+      </p>
+    </div>
+
+    <section style="text-align: center;">
+      <h2>Get In Touch</h2>
+      <p>
+        Interested in our projects? Want to contribute? Have feedback or suggestions? 
+        We'd love to hear from you.
+      </p>
+      <p style="margin-top: 2rem;">
+        <a href="https://github.com/CKCHDX" target="_blank" rel="noopener noreferrer" style="color: #00e5ff; text-decoration: none; font-size: 1.1rem;">
+          GitHub: @CKCHDX
+        </a>
+        <br><br>
+        <a href="mailto:contact@oscyra.solutions" style="color: #00e5ff; text-decoration: none; font-size: 1.1rem;">
+          Email: contact@oscyra.solutions
+        </a>
+      </p>
+      <a href="index.html" class="back-link">← Back to Projects</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="klar.html">Klar</a>
+    <a href="dynamic-os.html">Dynamic OS</a>
+    <a href="project-aion.html">Project AION</a>
+    <a href="https://github.com/CKCHDX" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="mailto:contact@oscyra.solutions">Contact</a>
+    <div class="copyright">&copy; 2026 Oscyra Solutions. All rights reserved.</div>
+  </footer>
+</body>
+</html>
